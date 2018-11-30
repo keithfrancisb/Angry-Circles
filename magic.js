@@ -5,48 +5,55 @@ let engine = Engine.create();
 
 // create a renderer
 let render = Render.create({
+  element: document.body,
     canvas: document.getElementById('canvas'),
     engine: engine,
     options: {
       width: window.innerWidth-300,
-      height: window.innerHeight-100
+      height: window.innerHeight-100,
+      wireframes: false
     }
 });
 
 const { canvas } = render;
+canvas.background = 'gray';
+
 
 // create static objects in the world
-const ground = Bodies.rectangle(400, 690, canvas.width, 20, { isStatic: true });
-const leftWall = Bodies.rectangle(0, 20, 20, canvas.height+200, { isStatic: true });
-// const slingShotPlatform = Bodies.rectangle(240, canvas.height-200, 80, 10, { isStatic: true });
 
+const renderBasePlatform = () => {
+  const ground = Bodies.rectangle(400, 690, canvas.width, 20, { isStatic: true });
+  World.add(engine.world, ground);
+  return ground;
+}
 
-const boxA = Bodies.rectangle(400, 200, 40, 40);
-const boxB = Bodies.rectangle(420, 50, 40, 40);
-let angryCircle = Bodies.circle(240, canvas.height-240, 25, { restitution: 1 });
+const renderBaseWall = () => {
+  const leftWall = Bodies.rectangle(0, 20, 20, canvas.height+200, { isStatic: true });
+  World.add(engine.world, leftWall);
+  return leftWall;
+}
 
+const createAngryCircle = () => {
+  let angryCircle = Bodies.circle(240, canvas.height-240, 25, { restitution: 0.8 });
+  World.add(engine.world, angryCircle);
+  return angryCircle;
+}
+
+let angryCircle = createAngryCircle();
 const slingShot = Constraint.create({
   pointA: { x:240, y: canvas.height-240 },
   bodyB: angryCircle,
   stiffness: 0.05
 });
+World.add(engine.world, slingShot);
+
 
 Events.on(engine, 'afterUpdate', () => {
   if(mouseConstraint.mouse.button === -1 && angryCircle.position.y < canvas.height-260) {
-    angryCircle = Bodies.circle(240, canvas.height-240, 25, { restitution: 1.3});
-    World.add(engine.world, angryCircle);
+    angryCircle = createAngryCircle();
     slingShot.bodyB = angryCircle;
   }
 });
-
-World.add(engine.world, slingShot);
-
-// add all of the bodies to the world
-// STATIC
-World.add(engine.world, [ground, leftWall]);
-
-// NON-STATIC
-World.add(engine.world, [boxA, boxB, angryCircle]);
 
 
 const mouse = Mouse.create(canvas);
@@ -61,9 +68,11 @@ const mouseConstraint = MouseConstraint.create(engine, {
 });
 World.add(engine.world, mouseConstraint);
 
-render.mouse = mouse;
 
 // run the engine
 Engine.run(engine);
 // run the renderer
 Render.run(render);
+
+renderBasePlatform();
+renderBaseWall();
