@@ -5,12 +5,13 @@ let engine = Engine.create();
 
 // create a renderer
 let render = Render.create({
-  element: document.body,
+    element: document.body,
     canvas: document.getElementById('canvas'),
     engine: engine,
     options: {
       width: window.innerWidth-300,
       height: window.innerHeight-100,
+      background: "black",
       wireframes: false
     }
 });
@@ -68,7 +69,7 @@ const mouseConstraint = MouseConstraint.create(engine, {
 });
 World.add(engine.world, mouseConstraint);
 
-
+render.mouse = mouse;
 // run the engine
 Engine.run(engine);
 // run the renderer
@@ -76,3 +77,6 @@ Render.run(render);
 
 renderBasePlatform();
 renderBaseWall();
+
+
+// ----------- LEVEL 1 ----------- //
