@@ -1,0 +1,31 @@
+{
+  "name": "Angry-Circles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "base.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "matter-js": "^0.14.2"
+  },
+  "devDependencies": {
+    "webpack": "^4.26.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keithfrancisb/Angry-Circles.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keithfrancisb/Angry-Circles/issues"
+  },
+  "homepage": "https://github.com/keithfrancisb/Angry-Circles#readme"
+}
