@@ -45,7 +45,6 @@ export const setupSlingshot = () => {
     bodyB: angryCircle,
     stiffness: 0.05
   });
-  // World.add(engine.world, slingShot);
   return slingShot;
 }
 

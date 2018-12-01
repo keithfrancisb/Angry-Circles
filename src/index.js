@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
             World.add(engine.world, angryCircle);
             slingShot = setupSlingshot(angryCircle);
             World.add(engine.world, slingShot);
-          }, 3000);
+          }, 2000);
         }
       }
     }
