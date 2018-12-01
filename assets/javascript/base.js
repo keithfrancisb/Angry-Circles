@@ -38,7 +38,7 @@ export const createAngryCircle = () => {
 };
 
 
-const setupSlingshot = () => {
+export const setupSlingshot = () => {
   let angryCircle = Bodies.circle(240, canvas.height-240, 25, { restitution: 0.8 });
   const slingShot = Constraint.create({
     pointA: { x:240, y: canvas.height-240 },
@@ -70,7 +70,6 @@ let base = renderBasePlatform();
 let leftWall = renderLeftWall();
 let rightWall = renderRightWall();
 let topWall = renderTopWall();
-let angryCircle = createAngryCircle();
-let slingShot = setupSlingshot();
 
-export const baseObjects = [base,leftWall,rightWall,topWall,slingShot];
+
+export const baseObjects = [base,leftWall,rightWall,topWall];
