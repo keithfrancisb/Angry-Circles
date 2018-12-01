@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const levels = [level1, level2];
   let gameProgress = 0;
 
-  World.add(engine.world, levels[0][0]);
+  World.add(engine.world, levels[0]);
 
   debugger
   Events.on(engine, 'collisionStart', (event) => {
