@@ -18,8 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
       canvas: document.getElementById('canvas'),
       engine: engine,
       options: {
-        width: window.innerWidth-300,
-        height: window.innerHeight-100,
+        width: window.innerWidth-400,
+        height: window.innerHeight-200,
         background: "#16161D",
         wireframes: false
       }

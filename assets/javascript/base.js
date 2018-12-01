@@ -4,8 +4,8 @@ let { Engine, Render, World, Bodies, Mouse, MouseConstraint, Constraint, Events 
 
 const canvas = document.getElementById('canvas');
 
-  canvas.width = window.innerWidth-300;
-  canvas.height = window.innerHeight-100;
+  canvas.width = window.innerWidth-400;
+  canvas.height = window.innerHeight-200;
 
 const renderBasePlatform = () => {
   const ground = Bodies.rectangle(canvas.width/2, canvas.height-20, canvas.width, 60, { label: "base", isStatic: true });
