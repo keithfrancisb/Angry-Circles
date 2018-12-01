@@ -143,8 +143,8 @@ const level1 = () => {
       if(pairs[i].bodyA.label === "target" && pairs[i].bodyB.label === "base" ||
           pairs[i].bodyB.label === "target" && pairs[i].bodyA.label === "base" ) {
 
-            setTimeout(() => World.clear(engine.world, false), 2000);
-            clearTimeout();
+            // setTimeout(() => World.clear(engine.world, false), 2000);
+            // clearTimeout();
       }
     }
   });
