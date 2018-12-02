@@ -8,7 +8,7 @@ import { baseObjects } from '../base';
   const x = (coordinate) => (canvas.width - coordinate);
   const y = (coordinate) => (canvas.height - coordinate);
 
-  // ----------- LEVEL 1 ----------- //
+  // ----------- LEVEL 3 ----------- //
 
   const renderFloor1 = () => {
     const floor = Bodies.rectangle(x(300), y(400), 300, 30, { isStatic: true });
@@ -21,7 +21,7 @@ import { baseObjects } from '../base';
   }
 
   const renderObstacle1 = () => {
-    const obs = Composites.stack(x(450), y(600), 2, 8, 1, 1, createBox);
+    const obs = Composites.stack(x(450), y(600), 5, 8, 1, 1, createBox);
     // World.add(engine.world, obs);
     return obs;
   };
@@ -35,28 +35,8 @@ import { baseObjects } from '../base';
   const floor1 = renderFloor1();
   const obs1 = renderObstacle1();
   const target = renderTarget();
-  export const level1 = [baseObjects, [renderFloor1, renderObstacle1, renderTarget]].flat();
 
-<<<<<<< HEAD
-  const level1 = [floor1, obs1, target];
+  export const level3 = [baseObjects, [renderFloor1, renderObstacle1, renderTarget]].flat();
 
-  Events.on(engine, 'collisionStart', (event) => {
-    const pairs = event.pairs;
 
-    for(let i=0; i < pairs.length; i++){
-      if(pairs[i].bodyA.label === "target" && pairs[i].bodyB.label === "base" ||
-          pairs[i].bodyB.label === "target" && pairs[i].bodyA.label === "base" ) {
-
-            // setTimeout(() => World.clear(engine.world, false), 2000);
-            // clearTimeout();
-      }
-    }
-  });
-
-}
 // ------------------------------- //
-
-export default level1;
-=======
-  // ------------------------------- //
->>>>>>> with_webpack
