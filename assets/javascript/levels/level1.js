@@ -37,26 +37,4 @@ import { baseObjects } from '../base';
   const target = renderTarget();
   export const level1 = [baseObjects, [renderFloor1, renderObstacle1, renderTarget]].flat();
 
-<<<<<<< HEAD
-  const level1 = [floor1, obs1, target];
-
-  Events.on(engine, 'collisionStart', (event) => {
-    const pairs = event.pairs;
-
-    for(let i=0; i < pairs.length; i++){
-      if(pairs[i].bodyA.label === "target" && pairs[i].bodyB.label === "base" ||
-          pairs[i].bodyB.label === "target" && pairs[i].bodyA.label === "base" ) {
-
-            // setTimeout(() => World.clear(engine.world, false), 2000);
-            // clearTimeout();
-      }
-    }
-  });
-
-}
-// ------------------------------- //
-
-export default level1;
-=======
   // ------------------------------- //
->>>>>>> with_webpack

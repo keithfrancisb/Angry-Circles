@@ -38,16 +38,5 @@ import { baseObjects } from '../base';
 
   export const level2 = [baseObjects, [renderFloor1, renderObstacle1, renderTarget]].flat();
 
-<<<<<<< HEAD
-    for(let i=0; i < pairs.length; i++){
-      if(pairs[i].bodyA.label === "target" && pairs[i].bodyB.label === "base" ||
-          pairs[i].bodyB.label === "target" && pairs[i].bodyA.label === "base" ) {
-            // setTimeout(() => World.clear(engine.world, false), 2000);
-            // clearTimeout();
-      }
-    }
-  });
-=======
->>>>>>> with_webpack
 
 // ------------------------------- //
