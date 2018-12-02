@@ -36,7 +36,7 @@ import { baseObjects } from '../base';
   const obs1 = renderObstacle1();
   const target = renderTarget();
 
-  export const level2 = [baseObjects, [floor1, obs1, target]].flat();
+  export const level2 = [baseObjects, [renderFloor1, renderObstacle1, renderTarget]].flat();
 
 
 // ------------------------------- //

@@ -52,21 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
   let slingShot = setupSlingshot(angryCircle);
   World.add(engine.world, slingShot);
 
-  let tries = 5;
-
-  Events.on(engine, 'afterUpdate', () => {
-    if(mouseConstraint.mouse.button === -1 && angryCircle.position.y < canvas.height-260) {
-      angryCircle = createAngryCircle();
-      World.add(engine.world, angryCircle);
-      slingShot.bodyB = angryCircle;
-    }
-  });
-
   let gameProgress = 0;
   const resetWorld = () => {
     setTimeout(() => {
       World.clear(engine.world);
-      World.add(engine.world, levels[gameProgress]);
+      levels[gameProgress].forEach( object => World.add(engine.world, object()) );
       mouseConstraint = createMouseConstraint(render,engine);
       angryCircle = createAngryCircle();
       World.add(engine.world, angryCircle);
@@ -75,11 +65,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2000);
   }
 
+  let tries = 4;
+
+  Events.on(engine, 'afterUpdate', () => {
+    if(mouseConstraint.mouse.button === -1 && angryCircle.position.y < canvas.height-260) {
+      angryCircle = createAngryCircle();
+      World.add(engine.world, angryCircle);
+      slingShot.bodyB = angryCircle;
+      tries--;
+      if(tries === 0) resetWorld();
+    }
+  });
 
   // LEVEL HANDLER
   const levels = [level1, level2, level3];
 
-  World.add(engine.world, levels[gameProgress]);
+  levels[gameProgress].forEach( object => World.add(engine.world, object()) );
 
   Events.on(engine, 'collisionStart', (event) => {
     const pairs = event.pairs;

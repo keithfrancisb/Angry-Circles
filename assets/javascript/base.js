@@ -65,10 +65,11 @@ export const createMouseConstraint = (render, engine) => {
 };
 
 
-let base = renderBasePlatform();
-let leftWall = renderLeftWall();
-let rightWall = renderRightWall();
-let topWall = renderTopWall();
+// let base = renderBasePlatform();
+// let leftWall = renderLeftWall();
+// let rightWall = renderRightWall();
+// let topWall = renderTopWall();
 
 
-export const baseObjects = [base,leftWall,rightWall,topWall];
+export const baseObjects = [renderBasePlatform,renderLeftWall,renderRightWall,renderTopWall];
+// export const baseObjects = [base,leftWall,rightWall,topWall];
