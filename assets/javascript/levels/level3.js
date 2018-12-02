@@ -8,7 +8,7 @@ import { baseObjects } from '../base';
   const x = (coordinate) => (canvas.width - coordinate);
   const y = (coordinate) => (canvas.height - coordinate);
 
-  // ----------- LEVEL 2 ----------- //
+  // ----------- LEVEL 3 ----------- //
 
   const renderFloor1 = () => {
     const floor = Bodies.rectangle(x(300), y(400), 300, 30, { isStatic: true });
@@ -21,7 +21,7 @@ import { baseObjects } from '../base';
   }
 
   const renderObstacle1 = () => {
-    const obs = Composites.stack(x(450), y(600), 4, 8, 1, 1, createBox);
+    const obs = Composites.stack(x(450), y(600), 5, 8, 1, 1, createBox);
     // World.add(engine.world, obs);
     return obs;
   };
@@ -36,7 +36,7 @@ import { baseObjects } from '../base';
   const obs1 = renderObstacle1();
   const target = renderTarget();
 
-  export const level2 = [baseObjects, [floor1, obs1, target]].flat();
+  export const level3 = [baseObjects, [floor1, obs1, target]].flat();
 
 
 // ------------------------------- //

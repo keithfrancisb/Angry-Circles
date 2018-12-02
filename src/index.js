@@ -1,6 +1,8 @@
 import Matter from 'matter-js';
 import { level1 } from '../assets/javascript/levels/level1';
 import { level2 } from '../assets/javascript/levels/level2';
+import { level3 } from '../assets/javascript/levels/level3';
+
 import { createMouseConstraint } from '../assets/javascript/base';
 
 let { Engine, Render, World, Bodies, Mouse, MouseConstraint, Constraint, Events } = Matter;
@@ -29,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let mouseConstraint = createMouseConstraint(render,engine);
 
   const createAngryCircle = () => {
-    let angryCircle = Bodies.circle(240, canvas.height-240, 25, { restitution: 0.8 });
+    let angryCircle = Bodies.circle(240, canvas.height-240, 30, { restitution: 0.8 });
     // World.add(engine.world, angryCircle);
     return angryCircle;
   };
@@ -50,6 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let slingShot = setupSlingshot(angryCircle);
   World.add(engine.world, slingShot);
 
+  let tries = 5;
+
   Events.on(engine, 'afterUpdate', () => {
     if(mouseConstraint.mouse.button === -1 && angryCircle.position.y < canvas.height-260) {
       angryCircle = createAngryCircle();
@@ -58,12 +62,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  let gameProgress = 0;
+  const resetWorld = () => {
+    setTimeout(() => {
+      World.clear(engine.world);
+      World.add(engine.world, levels[gameProgress]);
+      mouseConstraint = createMouseConstraint(render,engine);
+      angryCircle = createAngryCircle();
+      World.add(engine.world, angryCircle);
+      slingShot = setupSlingshot(angryCircle);
+      World.add(engine.world, slingShot);
+    }, 2000);
+  }
+
 
   // LEVEL HANDLER
-  const levels = [level1, level2];
-  let gameProgress = 0;
+  const levels = [level1, level2, level3];
 
-  World.add(engine.world, levels[0]);
+  World.add(engine.world, levels[gameProgress]);
 
   Events.on(engine, 'collisionStart', (event) => {
     const pairs = event.pairs;
@@ -75,15 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gameProgress++;
 
         if(gameProgress !== levels.length){
-          setTimeout(() => {
-            World.clear(engine.world);
-            World.add(engine.world, levels[gameProgress]);
-            mouseConstraint = createMouseConstraint(render,engine);
-            angryCircle = createAngryCircle();
-            World.add(engine.world, angryCircle);
-            slingShot = setupSlingshot(angryCircle);
-            World.add(engine.world, slingShot);
-          }, 2000);
+          resetWorld();
         }
       }
     }
