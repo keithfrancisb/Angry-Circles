@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
       tries--;
       if(tries === 0) {
         resetWorld();
+        tries = 4;
         const ctx = document.getElementById('canvas').getContext('2d');
 
       }
