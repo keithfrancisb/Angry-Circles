@@ -1,4 +1,5 @@
 import Matter from 'matter-js';
+import { level0 } from '../assets/javascript/levels/level0';
 import { level1 } from '../assets/javascript/levels/level1';
 import { level2 } from '../assets/javascript/levels/level2';
 import { level3 } from '../assets/javascript/levels/level3';
@@ -31,18 +32,18 @@ document.addEventListener('DOMContentLoaded', () => {
   let mouseConstraint = createMouseConstraint(render,engine);
 
   const createAngryCircle = () => {
-    let angryCircle = Bodies.circle(240, canvas.height-240, 30, { restitution: 0.8 });
+    let angryCircle = Bodies.circle(300, canvas.height-240, 30, { restitution: 0.8 });
     return angryCircle;
   };
 
   const setupSlingshot = (angryCircle) => {
     const slingShot = Constraint.create({
-      pointA: { x:240, y: canvas.height-240 },
+      pointA: { x:300, y: canvas.height-240 },
       bodyB: angryCircle,
       stiffness: 0.05
     });
     return slingShot;
-  }
+  };
 
   let angryCircle = createAngryCircle();
   World.add(engine.world, angryCircle);
@@ -60,12 +61,12 @@ document.addEventListener('DOMContentLoaded', () => {
       slingShot = setupSlingshot(angryCircle);
       World.add(engine.world, slingShot);
     }, 2000);
-  }
+  };
 
   let tries = 4;
 
   Events.on(engine, 'afterUpdate', () => {
-    if(mouseConstraint.mouse.button === -1 && angryCircle.position.y < canvas.height-260) {
+    if(mouseConstraint.mouse.button === -1 && angryCircle.position.y < canvas.height-250) {
       angryCircle = createAngryCircle();
       World.add(engine.world, angryCircle);
       slingShot.bodyB = angryCircle;

@@ -14,19 +14,19 @@ const renderBasePlatform = () => {
 };
 
 const renderLeftWall = () => {
-  const leftWall = Bodies.rectangle(0, 20, 20, canvas.height*2, { isStatic: true });
+  const leftWall = Bodies.rectangle(0, 20, 50, canvas.height*2, { isStatic: true });
   // World.add(engine.world, leftWall);
   return leftWall;
 };
 
 const renderRightWall = () => {
-  const rightWall = Bodies.rectangle(canvas.width, 20, 20, canvas.height*2, { isStatic: true });
+  const rightWall = Bodies.rectangle(canvas.width, 20, 50, canvas.height*2, { isStatic: true });
   // World.add(engine.world, rightWall);
   return rightWall;
 };
 
 const renderTopWall = () => {
-  const topWall = Bodies.rectangle(canvas.width/2, 10, canvas.width + 350, 20, { isStatic: true });
+  const topWall = Bodies.rectangle(canvas.width/2, 10, canvas.width + 350, 50, { isStatic: true });
   // World.add(engine.world, topWall);
   return topWall;
 };

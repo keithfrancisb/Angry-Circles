@@ -27,7 +27,7 @@ import { baseObjects } from '../base';
   };
 
   const renderTarget = () => {
-    const triangle = Bodies.polygon(x(300), y(600), 3, 30, { label: "target", density: 0.3 });
+    const triangle = Bodies.polygon(x(200), y(700), 3, 40, { label: "target", density: 0.5 });
     // World.add(engine.world, triangle);
     return triangle;
   };
