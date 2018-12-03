@@ -4,3 +4,25 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+#start {
+  position: fixed;
+  z-index: 3;
+  top: 20vh;
+  color: white;
+  left: 7vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50vw;
+  font-size: inherit;
+}
+
+#instructions {
+  width: 17vw;
+  font-size: 2vw;
+}
+
+.hide {
+  display: none !important;
+}

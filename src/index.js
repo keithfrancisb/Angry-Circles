@@ -89,8 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
     for(let i=0; i < pairs.length; i++){
       if(pairs[i].bodyA.label === "target" && pairs[i].bodyB.label === "base" ||
           pairs[i].bodyB.label === "target" && pairs[i].bodyA.label === "base" ) {
-        gameProgress++;
         if(gameProgress !== levels.length){
+          gameProgress++;
           tries = 4;
           setTimeout(resetWorld, 3000);
         }
@@ -99,7 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if(gameProgress === 0){
           gameProgress++;
-          setTimeout(resetWorld, 2000);
+
+          setTimeout(() => {
+            resetWorld();
+            document.getElementById('start').classList.add('hide');
+          }, 2000);
         }
       }
     }
