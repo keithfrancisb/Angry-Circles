@@ -91,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
           pairs[i].bodyB.label === "target" && pairs[i].bodyA.label === "base" ) {
         gameProgress++;
         if(gameProgress !== levels.length){
+          tries = 4;
           setTimeout(resetWorld, 3000);
         }
       } else if ((pairs[i].bodyA.label === "angry" && pairs[i].bodyB.label === "startGame" ||
