@@ -35,6 +35,8 @@ import { baseObjects } from '../base';
   const floor1 = renderFloor1();
   const obs1 = renderObstacle1();
   const target = renderTarget();
-  export const level1 = [baseObjects, [renderFloor1, renderObstacle1, renderTarget]].flat();
+
+  export const objects = [baseObjects, [renderFloor1, renderObstacle1, renderTarget]].flat();
+  export const info = "Knock the triangle down to pass the level.";
 
   // ------------------------------- //

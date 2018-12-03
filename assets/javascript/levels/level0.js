@@ -25,6 +25,5 @@ import { baseObjects } from '../base';
     return obs;
   };
 
-  export const level0 = [baseObjects, [renderStartGameSensor, renderStartGameStack]].flat();
-
+  export const objects = [baseObjects, [renderStartGameSensor, renderStartGameStack]].flat();
   // ------------------------------- //

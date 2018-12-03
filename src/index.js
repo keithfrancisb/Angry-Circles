@@ -1,8 +1,8 @@
 import Matter from 'matter-js';
-import { level0 } from '../assets/javascript/levels/level0';
-import { level1 } from '../assets/javascript/levels/level1';
-import { level2 } from '../assets/javascript/levels/level2';
-import { level3 } from '../assets/javascript/levels/level3';
+import * as level0 from '../assets/javascript/levels/level0';
+import * as level1 from '../assets/javascript/levels/level1';
+import * as level2 from '../assets/javascript/levels/level2';
+import * as level3 from '../assets/javascript/levels/level3';
 
 import { createMouseConstraint } from '../assets/javascript/base';
 
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let gameProgress = 0;
   const resetWorld = () => {
       World.clear(engine.world);
-      levels[gameProgress].forEach( object => World.add(engine.world, object()) );
+      levels[gameProgress].objects.forEach( object => World.add(engine.world, object()) );
       mouseConstraint = createMouseConstraint(render,engine);
       angryCircle = createAngryCircle();
       World.add(engine.world, angryCircle);
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // LEVEL HANDLER
   const levels = [level0, level1, level2, level3];
 
-  levels[gameProgress].forEach( object => World.add(engine.world, object()) );
+  levels[gameProgress].objects.forEach( object => World.add(engine.world, object()) );
 
   Events.on(engine, 'collisionStart', (event) => {
     const pairs = event.pairs;
@@ -92,7 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if(gameProgress !== levels.length){
           gameProgress++;
           tries = 4;
-          setTimeout(resetWorld, 3000);
+          setTimeout(() => {
+            resetWorld();
+            document.getElementById('level-info').innerHTML = levels[gameProgress].info;
+          }, 3000);
         }
       } else if ((pairs[i].bodyA.label === "angry" && pairs[i].bodyB.label === "startGame" ||
           pairs[i].bodyB.label === "angry" && pairs[i].bodyA.label === "startGame" ) && gameProgress === 0) {
@@ -102,6 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
           setTimeout(() => {
             resetWorld();
+            document.getElementById('level-info').classList.remove('base');
+            document.getElementById('level-info').innerHTML = levels[gameProgress].info;
             document.getElementById('start').classList.add('hide');
           }, 2000);
         }

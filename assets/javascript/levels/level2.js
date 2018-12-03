@@ -36,7 +36,7 @@ import { baseObjects } from '../base';
   const obs1 = renderObstacle1();
   const target = renderTarget();
 
-  export const level2 = [baseObjects, [renderFloor1, renderObstacle1, renderTarget]].flat();
-
+  export const objects= [baseObjects, [renderFloor1, renderObstacle1, renderTarget]].flat();
+  export const info = "Good Job! Can you get past through a thicker stack?";
 
 // ------------------------------- //
