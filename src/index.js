@@ -97,9 +97,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if(gameProgress !== levels.length){
           gameProgress++;
           tries = 4;
+          document.getElementById('level-info').innerHTML = "Level Passed!";
           setTimeout(() => {
             resetWorld();
             document.getElementById('tries-count').innerHTML = tries;
+            document.getElementById('level-count').innerHTML = gameProgress;
             document.getElementById('level-info').innerHTML = levels[gameProgress].info;
           }, 3000);
         }
@@ -114,7 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('level-info').classList.remove('base');
             document.getElementById('level-info').innerHTML = levels[gameProgress].info;
             document.getElementById('start').classList.add('hide');
-            document.getElementById('tries-container').classList.remove('hide');
+            document.getElementById('game-info').classList.remove('hide');
+            document.getElementById('level-count').innerHTML = gameProgress;
             document.getElementById('tries-count').innerHTML = tries;
           }, 2000);
         }
@@ -126,4 +129,17 @@ document.addEventListener('DOMContentLoaded', () => {
   Engine.run(engine);
   // run the renderer
   Render.run(render);
+
+  const reset = document.getElementById('reset')
+
+  reset.addEventListener('click', (e) => {
+    reset.disabled = true;
+    setTimeout(() => {
+    resetWorld();
+    tries = 4;
+    document.getElementById('tries-count').innerHTML = tries;
+    reset.disabled = false;
+    }, 1000);
+  });
+
 });

@@ -2,6 +2,7 @@ html {
   user-select: none;
 }
 
+
 body {
   display: flex;
   flex-direction: column;
@@ -38,20 +39,53 @@ h1 {
   color: purple;
 }
 
-
-#tries-container {
+#game-info {
   color: deeppink;
   position: fixed;
   top: 5vh;
   left: 4vw;
-  width: 8vw;
+  width: 26vw;
   font-size: 1.7vw;
   display: flex;
   justify-content: space-between;
+  letter-spacing: 0.1em;
 }
 
-#tries-count {
+#game-info > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 6vw;
+  width: 14vw;
+  border: transparent;
+  background-color: transparent;
+  outline: none;
+}
+
+#game-info > button > img {
+  width: 5vw;
+}
+
+/* #game-info > button > span {
+  font-family: "Bangers";
+  color: deeppink;
+  font-size: 2vw;
+} */
+
+#tries-container {
+  display: flex;
+  justify-content: space-between;
+  width: 9vw;
+}
+
+#tries-count, #level-count {
   font-size: 3vw;
   position: relative;
   top: -1.5vw;
+}
+
+#level-number-container {
+  display: flex;
+  justify-content: space-between;
+  width: 9vw;
 }
