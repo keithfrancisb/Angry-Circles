@@ -3,24 +3,32 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: 'Bangers', cursive;
 }
 
 #start {
   position: fixed;
   z-index: 3;
   top: 20vh;
-  color: white;
-  left: 7vw;
+  color: rebeccapurple;
+  left: 4vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 50vw;
-  font-size: inherit;
+  width: 55vw;
+  letter-spacing: 0.25em;
 }
 
+h1 {
+  font-size: 5vw;
+  transform: rotate(-5deg);
+}
+
+
 #instructions {
-  width: 17vw;
+  width: 18vw;
   font-size: 2vw;
+  color: purple;
 }
 
 .hide {
