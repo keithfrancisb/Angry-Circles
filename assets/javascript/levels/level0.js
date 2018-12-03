@@ -11,7 +11,7 @@ import { baseObjects } from '../base';
   // ----------- LEVEL 0 ----------- //
 
   const renderStartGameSensor = () => {
-    const ghostWall = Bodies.rectangle(900, canvas.height/2, 40, canvas.height*2, { label: "startGame", isSensor: true, isStatic: true });
+    const ghostWall = Bodies.rectangle(canvas.width*0.63, canvas.height/2, 40, canvas.height*2, { label: "startGame", isSensor: true, isStatic: true });
     return ghostWall;
   };
 
