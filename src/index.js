@@ -32,18 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const createAngryCircle = () => {
     let angryCircle = Bodies.circle(240, canvas.height-240, 30, { restitution: 0.8 });
-    // World.add(engine.world, angryCircle);
     return angryCircle;
   };
 
   const setupSlingshot = (angryCircle) => {
-    // let angryCircle = Bodies.circle(240, canvas.height-240, 25, { restitution: 0.8 });
     const slingShot = Constraint.create({
       pointA: { x:240, y: canvas.height-240 },
       bodyB: angryCircle,
       stiffness: 0.05
     });
-    // World.add(engine.world, slingShot);
     return slingShot;
   }
 
@@ -73,7 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
       World.add(engine.world, angryCircle);
       slingShot.bodyB = angryCircle;
       tries--;
-      if(tries === 0) resetWorld();
+      if(tries === 0) {
+        resetWorld();
+        const ctx = document.getElementById('canvas').getContext('2d');
+
+      }
     }
   });
 

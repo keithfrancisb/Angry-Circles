@@ -18,7 +18,7 @@ import { baseObjects } from '../base';
 
   const createBox = (x, y) => {
     return Bodies.rectangle(x, y, 20,20, { density: 0.5 });
-  }
+  };
 
   const renderObstacle1 = () => {
     const obs = Composites.stack(x(450), y(600), 5, 8, 1, 1, createBox);
