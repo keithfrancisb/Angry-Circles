@@ -10,15 +10,3 @@
 .base {
   display: none;
 }
-
-.level1 {
-  content: "Knock the triangle down to pass the level."
-}
-
-.level2 {
-  content: "Good Job! Can you get past through a thicker stack?"
-}
-
-.level3 {
-  content: "How about a thicker stack?"
-}

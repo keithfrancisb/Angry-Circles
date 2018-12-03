@@ -1,9 +1,14 @@
+html {
+  user-select: none;
+}
+
 body {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-family: 'Bangers', cursive;
+  letter-spacing: 0.25em;
 }
 
 #start {
@@ -16,7 +21,6 @@ body {
   flex-direction: row;
   justify-content: space-between;
   width: 55vw;
-  letter-spacing: 0.25em;
 }
 
 h1 {
@@ -24,6 +28,9 @@ h1 {
   transform: rotate(-5deg);
 }
 
+.hide {
+  display: none !important;
+}
 
 #instructions {
   width: 18vw;
@@ -31,6 +38,20 @@ h1 {
   color: purple;
 }
 
-.hide {
-  display: none !important;
+
+#tries-container {
+  color: deeppink;
+  position: fixed;
+  top: 5vh;
+  left: 4vw;
+  width: 8vw;
+  font-size: 1.7vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+#tries-count {
+  font-size: 3vw;
+  position: relative;
+  top: -1.5vw;
 }

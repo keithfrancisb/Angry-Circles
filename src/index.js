@@ -61,21 +61,26 @@ document.addEventListener('DOMContentLoaded', () => {
       World.add(engine.world, slingShot);
   };
 
-  let tries = 4;
+  let tries = 5;
 
   Events.on(engine, 'afterUpdate', () => {
     if(mouseConstraint.mouse.button === -1 && angryCircle.position.y < canvas.height-250) {
-      angryCircle = createAngryCircle();
-      World.add(engine.world, angryCircle);
-      slingShot.bodyB = angryCircle;
-      tries--;
-      if(tries === 0) {
-        resetWorld();
-        tries = 4;
-        const ctx = document.getElementById('canvas').getContext('2d');
-
+      document.getElementById('tries-count').innerHTML = tries;
+      if(tries > 0) {
+          tries--;
+          angryCircle = createAngryCircle();
+          World.add(engine.world, angryCircle);
+          slingShot.bodyB = angryCircle;
+          document.getElementById('tries-count').innerHTML = tries;
+          if(tries === 0) {
+            setTimeout(() => {
+              resetWorld();
+              tries = 4;
+              document.getElementById('tries-count').innerHTML = tries;
+            }, 6000);
+          }
+        }
       }
-    }
   });
 
   // LEVEL HANDLER
@@ -94,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
           tries = 4;
           setTimeout(() => {
             resetWorld();
+            document.getElementById('tries-count').innerHTML = tries;
             document.getElementById('level-info').innerHTML = levels[gameProgress].info;
           }, 3000);
         }
@@ -108,6 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('level-info').classList.remove('base');
             document.getElementById('level-info').innerHTML = levels[gameProgress].info;
             document.getElementById('start').classList.add('hide');
+            document.getElementById('tries-container').classList.remove('hide');
+            document.getElementById('tries-count').innerHTML = tries;
           }, 2000);
         }
       }
