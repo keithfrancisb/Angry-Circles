@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let mouseConstraint = createMouseConstraint(render,engine);
 
   const createAngryCircle = () => {
-    let angryCircle = Bodies.circle(300, canvas.height-240, 30, { restitution: 0.8 });
+    let angryCircle = Bodies.circle(300, canvas.height-240, 30, { label: 'angry', restitution: 0.8 });
     return angryCircle;
   };
 
@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let gameProgress = 0;
   const resetWorld = () => {
-    setTimeout(() => {
       World.clear(engine.world);
       levels[gameProgress].forEach( object => World.add(engine.world, object()) );
       mouseConstraint = createMouseConstraint(render,engine);
@@ -60,7 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
       World.add(engine.world, angryCircle);
       slingShot = setupSlingshot(angryCircle);
       World.add(engine.world, slingShot);
-    }, 2000);
   };
 
   let tries = 4;
@@ -81,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // LEVEL HANDLER
-  const levels = [level1, level2, level3];
+  const levels = [level0, level1, level2, level3];
 
   levels[gameProgress].forEach( object => World.add(engine.world, object()) );
 
@@ -91,11 +89,16 @@ document.addEventListener('DOMContentLoaded', () => {
     for(let i=0; i < pairs.length; i++){
       if(pairs[i].bodyA.label === "target" && pairs[i].bodyB.label === "base" ||
           pairs[i].bodyB.label === "target" && pairs[i].bodyA.label === "base" ) {
-
         gameProgress++;
-
         if(gameProgress !== levels.length){
-          resetWorld();
+          setTimeout(resetWorld, 3000);
+        }
+      } else if ((pairs[i].bodyA.label === "angry" && pairs[i].bodyB.label === "startGame" ||
+          pairs[i].bodyB.label === "angry" && pairs[i].bodyA.label === "startGame" ) && gameProgress === 0) {
+
+        if(gameProgress === 0){
+          gameProgress++;
+          setTimeout(resetWorld, 2000);
         }
       }
     }

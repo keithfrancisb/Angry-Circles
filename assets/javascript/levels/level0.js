@@ -11,9 +11,20 @@ import { baseObjects } from '../base';
   // ----------- LEVEL 0 ----------- //
 
   const renderStartGameSensor = () => {
-    const ghostWall = Bodies.rectangle(700, canvas.height/2, 40, canvas.height*2, { isSensor: true });
+    const ghostWall = Bodies.rectangle(900, canvas.height/2, 40, canvas.height*2, { label: "startGame", isSensor: true, isStatic: true });
+    return ghostWall;
   };
 
-  export const level0 = [baseObjects, [renderStartGameSensor]].flat();
+  const createBox = (x, y) => {
+    return Bodies.rectangle(x, y, 40,40, { density: 0.001 });
+  };
+
+  const renderStartGameStack = () => {
+    const obs = Composites.stack(x(500), y(700), 11, 40, 0, 0, createBox);
+    // World.add(engine.world, obs);
+    return obs;
+  };
+
+  export const level0 = [baseObjects, [renderStartGameSensor, renderStartGameStack]].flat();
 
   // ------------------------------- //
