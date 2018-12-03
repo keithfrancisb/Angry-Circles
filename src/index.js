@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tries = 4;
     document.getElementById('tries-count').innerHTML = tries;
     reset.disabled = false;
-    }, 1000);
+  }, 500);
   });
 
 });
