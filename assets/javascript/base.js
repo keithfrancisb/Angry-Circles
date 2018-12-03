@@ -4,8 +4,8 @@ let { Engine, Render, World, Bodies, Mouse, MouseConstraint, Constraint, Events 
 
 const canvas = document.getElementById('canvas');
 
-  canvas.width = window.innerWidth-400;
-  canvas.height = window.innerHeight-200;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
 const renderBasePlatform = () => {
   const ground = Bodies.rectangle(canvas.width/2, canvas.height-20, canvas.width, 60, { label: "base", isStatic: true });
@@ -14,13 +14,13 @@ const renderBasePlatform = () => {
 };
 
 const renderLeftWall = () => {
-  const leftWall = Bodies.rectangle(0, 20, 20, canvas.height+550, { isStatic: true });
+  const leftWall = Bodies.rectangle(0, 20, 20, canvas.height*2, { isStatic: true });
   // World.add(engine.world, leftWall);
   return leftWall;
 };
 
 const renderRightWall = () => {
-  const rightWall = Bodies.rectangle(canvas.width, 20, 20, canvas.height+550, { isStatic: true });
+  const rightWall = Bodies.rectangle(canvas.width, 20, 20, canvas.height*2, { isStatic: true });
   // World.add(engine.world, rightWall);
   return rightWall;
 };
