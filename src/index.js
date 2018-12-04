@@ -77,12 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
           slingShot.bodyB = angryCircle;
           document.getElementById('tries-count').innerHTML = gameProgress === 6 ? '-' : tries;
           if(tries === 0 && gameProgress !==6) {
-            document.getElementById('level-info').innerHTML = 'You Lost..... Try Again!';
+            setTimeout(() => { document.getElementById('level-info').innerHTML = 'You Lost..... Try Again!'; }, 4000);
             setTimeout(() => {
               resetWorld();
               tries = 4;
               document.getElementById('tries-count').innerHTML = tries;
-            }, 6000);
+            }, 9000);
           }
       }
   });
