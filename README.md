@@ -13,10 +13,3 @@ Angry Circle is inspired by the game Angry Birds. Angry Birds is a game where yo
 * *CSS* : Used to format the background, canvas, game instructions, and my contact info.
 * *JavaScript* : Used to create the game on the canvas.
 * *Matter.js* : Used to handle the necessary physics such as collision impacts, density, weight, and gravity.
-
-#### How to use:
-1. Clone the repo.
-2. Run ```npm install```
-3. Run ```npx webpack --watch```
-4. Open the path of ```index.html``` on the browser
-5. Start playing!!! 
