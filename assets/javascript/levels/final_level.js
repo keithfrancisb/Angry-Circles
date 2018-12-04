@@ -14,16 +14,12 @@ import { baseObjects } from '../base';
     return Bodies.polygon(x, y, 8, 40);
   };
 
-  const createBox = (x, y) => {
-    return Bodies.rectangle(x, y, 40,40, { density: 0.001 });
-  };
-
   const renderStartGameStack = () => {
-    const obs = Composites.stack(x(500), y(700), 11, 40, 0, 0, createPolygon);
+    const obs = Composites.stack(x(500), y(700), 11, 30, 0, 0, createPolygon);
     return obs;
   };
 
-  export const objects = [baseObjects, [renderStartGameSensor, renderStartGameStack]].flat();
-  export const info = "Congratulations! You beat the most difficult level in the game! Knock yourself out with the balls!"
-  
+  export const objects = [baseObjects, [renderStartGameStack]].flat();
+  export const info = "Congratulations! You beat the game!"
+
   // ------------------------------- //
