@@ -37,6 +37,6 @@ import { baseObjects } from '../base';
   const target = renderTarget();
 
   export const objects= [baseObjects, [renderFloor1, renderObstacle1, renderTarget]].flat();
-  export const info = "Good Job! Can you get past through a thicker stack?";
+  export const info = "Good Job! Can you get past through a thinner stack?";
 
 // ------------------------------- //

@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // run the renderer
   Render.run(render);
 
-  const reset = document.getElementById('reset')
+  const reset = document.getElementById('reset');
 
   reset.addEventListener('click', (e) => {
     reset.disabled = true;

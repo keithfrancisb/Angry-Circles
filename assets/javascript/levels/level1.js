@@ -8,7 +8,7 @@ import { baseObjects } from '../base';
   const x = (coordinate) => (canvas.width - coordinate);
   const y = (coordinate) => (canvas.height - coordinate);
 
-  // ----------- LEVEL 1 ----------- //
+  // ----------- LEVEL 3 ----------- //
 
   const renderFloor1 = () => {
     const floor = Bodies.rectangle(x(300), y(400), 300, 30, { isStatic: true });
@@ -21,13 +21,13 @@ import { baseObjects } from '../base';
   };
 
   const renderObstacle1 = () => {
-    const obs = Composites.stack(x(450), y(600), 2, 8, 1, 1, createBox);
+    const obs = Composites.stack(x(450), y(600), 5, 8, 1, 1, createBox);
     // World.add(engine.world, obs);
     return obs;
   };
 
   const renderTarget = () => {
-    const triangle = Bodies.polygon(x(300), y(600), 3, 40, { label: "target", density: 0.5 });
+    const triangle = Bodies.polygon(x(200), y(700), 3, 40, { label: "target", density: 0.5 });
     // World.add(engine.world, triangle);
     return triangle;
   };
@@ -39,4 +39,4 @@ import { baseObjects } from '../base';
   export const objects = [baseObjects, [renderFloor1, renderObstacle1, renderTarget]].flat();
   export const info = "Knock the triangle down to pass the level.";
 
-  // ------------------------------- //
+// ------------------------------- //
