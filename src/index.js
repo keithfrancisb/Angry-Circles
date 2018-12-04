@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let slingShot = setupSlingshot(angryCircle);
   World.add(engine.world, slingShot);
 
-  let gameProgress = 5;
+  let gameProgress = 0;
   const resetWorld = () => {
       World.clear(engine.world);
       levels[gameProgress].objects.forEach( object => World.add(engine.world, object(engine)) );
@@ -92,41 +92,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
   levels[gameProgress].objects.forEach( object => World.add(engine.world, object(engine)) );
 
-  // Events.on(engine, 'collisionStart', (event) => {
-  //   const pairs = event.pairs;
-  //
-  //   for(let i=0; i < pairs.length; i++){
-  //     if(pairs[i].bodyA.label === "target" && pairs[i].bodyB.label === "base" ||
-  //         pairs[i].bodyB.label === "target" && pairs[i].bodyA.label === "base" ) {
-  //       if(gameProgress !== levels.length){
-  //         gameProgress++;
-  //         tries = 4;
-  //         document.getElementById('level-info').innerHTML = "Level Passed!";
-  //         setTimeout(() => {
-  //           resetWorld();
-  //           document.getElementById('tries-count').innerHTML = tries;
-  //           document.getElementById('level-count').innerHTML = gameProgress;
-  //           document.getElementById('level-info').innerHTML = levels[gameProgress].info;
-  //         }, 3000);
-  //       }
-  //     } else if ((pairs[i].bodyA.label === "angry" && pairs[i].bodyB.label === "startGame" ||
-  //         pairs[i].bodyB.label === "angry" && pairs[i].bodyA.label === "startGame" ) && gameProgress === 0) {
-  //
-  //       if(gameProgress === 0){
-  //         gameProgress++;
-  //
-  //         setTimeout(() => {
-  //           resetWorld();
-  //           document.getElementById('level-info').classList.remove('base');
-  //           document.getElementById('start').classList.add('hide');
-  //           document.getElementById('game-info').classList.remove('hide');
-  //           document.getElementById('level-count').innerHTML = gameProgress;
-  //           document.getElementById('tries-count').innerHTML = tries;
-  //         }, 2000);
-  //       }
-  //     }
-  //   }
-  // });
+  Events.on(engine, 'collisionStart', (event) => {
+    const pairs = event.pairs;
+
+    for(let i=0; i < pairs.length; i++){
+      if(pairs[i].bodyA.label === "target" && pairs[i].bodyB.label === "base" ||
+          pairs[i].bodyB.label === "target" && pairs[i].bodyA.label === "base" ) {
+        if(gameProgress !== levels.length){
+          gameProgress++;
+          tries = 4;
+          document.getElementById('level-info').innerHTML = "Level Passed!";
+          setTimeout(() => {
+            resetWorld();
+            document.getElementById('tries-count').innerHTML = tries;
+            document.getElementById('level-count').innerHTML = gameProgress;
+            document.getElementById('level-info').innerHTML = levels[gameProgress].info;
+          }, 3000);
+        }
+      } else if ((pairs[i].bodyA.label === "angry" && pairs[i].bodyB.label === "startGame" ||
+          pairs[i].bodyB.label === "angry" && pairs[i].bodyA.label === "startGame" ) && gameProgress === 0) {
+
+        if(gameProgress === 0){
+          gameProgress++;
+
+          setTimeout(() => {
+            resetWorld();
+            document.getElementById('level-info').classList.remove('base');
+            document.getElementById('start').classList.add('hide');
+            document.getElementById('game-info').classList.remove('hide');
+            document.getElementById('level-count').innerHTML = gameProgress;
+            document.getElementById('tries-count').innerHTML = tries;
+          }, 2000);
+        }
+      }
+    }
+  });
 
   // run the engine
   Engine.run(engine);
