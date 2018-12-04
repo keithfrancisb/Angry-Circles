@@ -1,12 +1,14 @@
 #my-info {
   position: fixed;
   display: flex;
-  width: 32vw;
+  width: 27vw;
   justify-content: space-between;
   align-items: center;
   bottom: 0vw;
   left: 5vw;
   color: #101015;
+  letter-spacing: 0.09vw;
+  font-size: 1.2vw;
 }
 
 #my-info > a > img {

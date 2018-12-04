@@ -36,9 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
   let mouseConstraint = createMouseConstraint(render,engine);
 
   const createAngryCircle = () => {
-    let angryCircle = Bodies.circle(300, canvas.height-250, 30, { label: 'angry', restitution: 0.8, density: 0.3 });
+    let angryCircle = Bodies.circle(300, canvas.height-250, 30, {
+      label: 'angry',
+      restitution: 0.8,
+      density: 0.3,
+     });
     return angryCircle;
   };
+
+
 
   const setupSlingshot = (angryCircle) => {
     const slingShot = Constraint.create({
