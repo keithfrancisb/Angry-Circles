@@ -17,7 +17,7 @@ import { baseObjects } from '../base';
   };
 
   const createBox = (x, y) => {
-    return Bodies.rectangle(x, y, 20,20, { density: 0.5 });
+    return Bodies.rectangle(x, y, 20,20, { density: 0.9 });
   };
 
   const renderObstacle1 = () => {

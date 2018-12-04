@@ -3,6 +3,7 @@ import * as level0 from '../assets/javascript/levels/level0';
 import * as level1 from '../assets/javascript/levels/level1';
 import * as level2 from '../assets/javascript/levels/level2';
 import * as level3 from '../assets/javascript/levels/level3';
+import * as level4 from '../assets/javascript/levels/level4';
 
 import { createMouseConstraint } from '../assets/javascript/base';
 
@@ -24,7 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
         width: window.innerWidth,
         height: window.innerHeight,
         background: "#16161D",
-        wireframes: false
+        wireframes: false,
+        showMousePosition: true
       }
   });
 
@@ -32,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let mouseConstraint = createMouseConstraint(render,engine);
 
   const createAngryCircle = () => {
-    let angryCircle = Bodies.circle(300, canvas.height-240, 30, { label: 'angry', restitution: 0.8 });
+    let angryCircle = Bodies.circle(300, canvas.height-240, 30, { label: 'angry', restitution: 0.8, density: 0.3 });
     return angryCircle;
   };
 
@@ -59,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
       World.add(engine.world, angryCircle);
       slingShot = setupSlingshot(angryCircle);
       World.add(engine.world, slingShot);
+      document.getElementById('level-info').innerHTML = levels[gameProgress].info;
   };
 
   let tries = 5;
@@ -73,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
           slingShot.bodyB = angryCircle;
           document.getElementById('tries-count').innerHTML = tries;
           if(tries === 0) {
+            document.getElementById('level-info').innerHTML = 'You Lost..... Try Again!';
             setTimeout(() => {
               resetWorld();
               tries = 4;
@@ -84,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // LEVEL HANDLER
-  const levels = [level0, level1, level2, level3];
+  const levels = [level0, level1, level2, level3, level4];
 
   levels[gameProgress].objects.forEach( object => World.add(engine.world, object()) );
 
@@ -114,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
           setTimeout(() => {
             resetWorld();
             document.getElementById('level-info').classList.remove('base');
-            document.getElementById('level-info').innerHTML = levels[gameProgress].info;
             document.getElementById('start').classList.add('hide');
             document.getElementById('game-info').classList.remove('hide');
             document.getElementById('level-count').innerHTML = gameProgress;
