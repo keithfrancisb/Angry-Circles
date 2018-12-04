@@ -4,6 +4,7 @@ import * as level1 from '../assets/javascript/levels/level1';
 import * as level2 from '../assets/javascript/levels/level2';
 import * as level3 from '../assets/javascript/levels/level3';
 import * as level4 from '../assets/javascript/levels/level4';
+import * as level5 from '../assets/javascript/levels/level5';
 
 import { createMouseConstraint } from '../assets/javascript/base';
 
@@ -55,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let gameProgress = 0;
   const resetWorld = () => {
       World.clear(engine.world);
-      levels[gameProgress].objects.forEach( object => World.add(engine.world, object()) );
+      levels[gameProgress].objects.forEach( object => World.add(engine.world, object(engine)) );
       mouseConstraint = createMouseConstraint(render,engine);
       angryCircle = createAngryCircle();
       World.add(engine.world, angryCircle);
@@ -88,9 +89,9 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // LEVEL HANDLER
-  const levels = [level0, level1, level2, level3, level4];
+  const levels = [level0, level1, level2, level3, level4, level5];
 
-  levels[gameProgress].objects.forEach( object => World.add(engine.world, object()) );
+  levels[gameProgress].objects.forEach( object => World.add(engine.world, object(engine)) );
 
   Events.on(engine, 'collisionStart', (event) => {
     const pairs = event.pairs;
@@ -133,6 +134,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // run the renderer
   Render.run(render);
 
+  // fit the render viewport to the scene
+  Render.lookAt(render, {
+      min: { x: 0, y: 0 },
+      max: { x: window.innerWidth, y: window.innerHeight }
+  });
+
+
   const reset = document.getElementById('reset');
 
   reset.addEventListener('click', (e) => {
@@ -141,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
     resetWorld();
     tries = 4;
     document.getElementById('tries-count').innerHTML = tries;
-    reset.disabled = false;
+    setTimeout(() => (reset.disabled = false), 2000);
   }, 500);
   });
 

@@ -44,6 +44,6 @@ import { baseObjects } from '../base';
   };
 
   export const objects = [baseObjects, [renderFloor1, renderRightWall, box1, box2, renderTarget]].flat();
-  export const info = "You get the gist of it. Have Fun!";
+  export const info = "Not everything is what they seem to be.";
 
   // ------------------------------- //
