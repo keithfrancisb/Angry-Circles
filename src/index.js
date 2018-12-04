@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const slingShot = Constraint.create({
       pointA: { x:300, y: canvas.height-250 },
       bodyB: angryCircle,
-      stiffness: 0.01
+      stiffness: 0.1
     });
     return slingShot;
   };
@@ -71,13 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
   Events.on(engine, 'afterUpdate', () => {
     if(mouseConstraint.mouse.button === -1 && angryCircle.position.y < canvas.height-260) {
       document.getElementById('tries-count').innerHTML = tries;
-      if(tries > 0) {
+          tries--;
           angryCircle = createAngryCircle();
           World.add(engine.world, angryCircle);
           slingShot.bodyB = angryCircle;
           document.getElementById('tries-count').innerHTML = gameProgress === 6 ? '-' : tries;
           if(tries === 0 && gameProgress !==6) {
-            tries--;
             document.getElementById('level-info').innerHTML = 'You Lost..... Try Again!';
             setTimeout(() => {
               resetWorld();
@@ -85,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
               document.getElementById('tries-count').innerHTML = tries;
             }, 6000);
           }
-        }
       }
   });
 
@@ -150,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     resetWorld();
     tries = 4;
     document.getElementById('tries-count').innerHTML = tries;
-    setTimeout(() => (reset.disabled = false), 2000);
+    setTimeout(() => (reset.disabled = false), 4000);
   }, 500);
   });
 
