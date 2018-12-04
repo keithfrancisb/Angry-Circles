@@ -5,6 +5,7 @@ import * as level2 from '../assets/javascript/levels/level2';
 import * as level3 from '../assets/javascript/levels/level3';
 import * as level4 from '../assets/javascript/levels/level4';
 import * as level5 from '../assets/javascript/levels/level5';
+import * as finalLevel from '../assets/javascript/levels/final_level';
 
 import { createMouseConstraint } from '../assets/javascript/base';
 
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         height: window.innerHeight,
         background: "#16161D",
         wireframes: false,
-        showMousePosition: true
+        showMousePosition: false
       }
   });
 
@@ -35,15 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
   let mouseConstraint = createMouseConstraint(render,engine);
 
   const createAngryCircle = () => {
-    let angryCircle = Bodies.circle(300, canvas.height-240, 30, { label: 'angry', restitution: 0.8, density: 0.3 });
+    let angryCircle = Bodies.circle(300, canvas.height-250, 30, { label: 'angry', restitution: 0.8, density: 0.3 });
     return angryCircle;
   };
 
   const setupSlingshot = (angryCircle) => {
     const slingShot = Constraint.create({
-      pointA: { x:300, y: canvas.height-240 },
+      pointA: { x:300, y: canvas.height-250 },
       bodyB: angryCircle,
-      stiffness: 0.05
+      stiffness: 0.009
     });
     return slingShot;
   };
@@ -68,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let tries = 5;
 
   Events.on(engine, 'afterUpdate', () => {
-    if(mouseConstraint.mouse.button === -1 && angryCircle.position.y < canvas.height-250) {
+    if(mouseConstraint.mouse.button === -1 && angryCircle.position.y < canvas.height-260) {
       document.getElementById('tries-count').innerHTML = tries;
       if(tries > 0) {
           tries--;
@@ -89,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // LEVEL HANDLER
-  const levels = [level0, level1, level2, level3, level4, level5];
+  const levels = [level0, level1, level2, level3, level4, level5, finalLevel];
 
   levels[gameProgress].objects.forEach( object => World.add(engine.world, object(engine)) );
 

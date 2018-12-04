@@ -8,7 +8,7 @@ const canvas = document.getElementById('canvas');
   canvas.height = window.innerHeight;
 
 const renderBasePlatform = () => {
-  const ground = Bodies.rectangle(canvas.width/2, canvas.height-20, canvas.width, 60, { label: "base", isStatic: true });
+  const ground = Bodies.rectangle(canvas.width/2, canvas.height-20, canvas.width, 80, { label: "base", isStatic: true });
   // World.add(engine.world, ground);
   return ground;
 };
