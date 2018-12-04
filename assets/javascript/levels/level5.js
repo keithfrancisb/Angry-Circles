@@ -20,11 +20,11 @@ import { baseObjects } from '../base';
   };
 
   const constraint1 = (engine) => {
-    const fan = Bodies.rectangle(850, 370, 280, 50, { density: 0.8 });
+    const fan = Bodies.rectangle(x(590), y(450), 280, 50, { density: 0.8 });
     World.add(engine.world, fan);
     setInterval(() => fan.torque = -6500, 100);
     const constraint = Constraint.create({
-      pointA: { x: 850, y: 370 },
+      pointA: { x: x(590), y: y(450) },
       bodyB: fan,
       stiffness: 1
     });
