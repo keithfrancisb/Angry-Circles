@@ -60,9 +60,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let slingShot = setupSlingshot(angryCircle);
   World.add(engine.world, slingShot);
 
-  let gameProgress = 0;
+  let gameProgress = 0; let levelUpCount = 0;
   const resetWorld = () => {
       World.clear(engine.world);
+      levelUpCount = 0;
       levels[gameProgress].objects.forEach( object => World.add(engine.world, object(engine)) );
       mouseConstraint = createMouseConstraint(render,engine);
       angryCircle = createAngryCircle();
@@ -73,9 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   let tries = 5;
-
+  let failInfo; let failRender;
   Events.on(engine, 'afterUpdate', () => {
-    if(mouseConstraint.mouse.button === -1 && angryCircle.position.y < canvas.height-260) {
+    if(mouseConstraint.mouse.button === -1 && angryCircle.position.y < canvas.height-260 && (tries > 0 || gameProgress === 6) ) {
       document.getElementById('tries-count').innerHTML = tries;
           tries--;
           angryCircle = createAngryCircle();
@@ -83,12 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
           slingShot.bodyB = angryCircle;
           document.getElementById('tries-count').innerHTML = gameProgress === 6 ? '-' : tries;
           if(tries === 0 && gameProgress !==6) {
-            setTimeout(() => { document.getElementById('level-info').innerHTML = 'You Lost..... Try Again!'; }, 4000);
-            setTimeout(() => {
+            failInfo = setTimeout(() => { document.getElementById('level-info').innerHTML = 'You Lost..... Try Again!'; }, 4000);
+            failRender = setTimeout(() => {
               resetWorld();
               tries = 4;
               document.getElementById('tries-count').innerHTML = tries;
-            }, 9000);
+            }, 7000);
           }
       }
   });
@@ -107,13 +108,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if(gameProgress !== levels.length){
           gameProgress++;
           tries = 4;
-          document.getElementById('level-info').innerHTML = "Level Passed!";
-          setTimeout(() => {
-            resetWorld();
-            document.getElementById('tries-count').innerHTML = tries;
-            document.getElementById('level-count').innerHTML = gameProgress;
-            document.getElementById('level-info').innerHTML = levels[gameProgress].info;
-          }, 3000);
+          if(++levelUpCount < 2) {
+            document.getElementById('level-info').innerHTML = "Level Passed!";
+            setTimeout(() => {
+              clearTimeout(failInfo);
+              clearTimeout(failRender);
+              resetWorld();
+              document.getElementById('tries-count').innerHTML = tries;
+              document.getElementById('level-count').innerHTML = gameProgress;
+              document.getElementById('level-info').innerHTML = levels[gameProgress].info;
+            }, 3000);
+          }
         }
       } else if ((pairs[i].bodyA.label === "angry" && pairs[i].bodyB.label === "startGame" ||
           pairs[i].bodyB.label === "angry" && pairs[i].bodyA.label === "startGame" ) && gameProgress === 0) {
