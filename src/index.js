@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const resetWorld = () => {
       World.clear(engine.world);
       levelUpCount = 0;
+      tries = 4;
       levels[gameProgress].objects.forEach( object => World.add(engine.world, object(engine)) );
       mouseConstraint = createMouseConstraint(render,engine);
       angryCircle = createAngryCircle();
