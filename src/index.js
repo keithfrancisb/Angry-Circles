@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  let mouseConstraint = createMouseConstraint(render,engine);
 
   const createAngryCircle = () => {
     let angryCircle = Bodies.circle(300, canvas.height-250, 30, {
@@ -44,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return angryCircle;
   };
 
+  let mouseConstraint = createMouseConstraint(render,engine);
 
 
   const setupSlingshot = (angryCircle) => {
@@ -106,14 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
     for(let i=0; i < pairs.length; i++){
       if(pairs[i].bodyA.label === "target" && pairs[i].bodyB.label === "base" ||
           pairs[i].bodyB.label === "target" && pairs[i].bodyA.label === "base" ) {
+          clearTimeout(failInfo);
+          clearTimeout(failRender);
         if(gameProgress !== levels.length){
           gameProgress++;
           tries = 4;
           if(++levelUpCount < 2) {
             document.getElementById('level-info').innerHTML = "Level Passed!";
             setTimeout(() => {
-              clearTimeout(failInfo);
-              clearTimeout(failRender);
               resetWorld();
               document.getElementById('tries-count').innerHTML = tries;
               document.getElementById('level-count').innerHTML = gameProgress;
