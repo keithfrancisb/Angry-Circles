@@ -11,7 +11,7 @@ import { baseObjects } from '../base';
   // ----------- LEVEL 3 ----------- //
 
   const renderFloor1 = () => {
-    const floor = Bodies.rectangle(x(300), y(400), 300, 30, { isStatic: true });
+    const floor = Bodies.rectangle(x(300), y(200), 300, 30, { isStatic: true });
     // World.add(engine.world, floor);
     return floor;
   };
@@ -21,13 +21,13 @@ import { baseObjects } from '../base';
   };
 
   const renderObstacle1 = () => {
-    const obs = Composites.stack(x(450), y(600), 5, 8, 1, 1, createBox);
+    const obs = Composites.stack(x(450), y(400), 5, 8, 1, 1, createBox);
     // World.add(engine.world, obs);
     return obs;
   };
 
   const renderTarget = () => {
-    const triangle = Bodies.polygon(x(200), y(700), 3, 40, { label: "target", density: 0.5 });
+    const triangle = Bodies.polygon(x(200), y(500), 3, 40, { label: "target", density: 0.5 });
     // World.add(engine.world, triangle);
     return triangle;
   };

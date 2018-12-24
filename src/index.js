@@ -24,18 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
       canvas: document.getElementById('canvas'),
       engine: engine,
       options: {
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width: 1400,
+        height: 700,
         background: "#16161D",
         wireframes: false,
-        showMousePosition: false
+        showMousePosition: true
       }
   });
 
 
 
   const createAngryCircle = () => {
-    let angryCircle = Bodies.circle(300, canvas.height-250, 30, {
+    let angryCircle = Bodies.circle(300, 600, 30, {
       label: 'angry',
       restitution: 0.8,
       density: 0.3,
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const setupSlingshot = (angryCircle) => {
     const slingShot = Constraint.create({
-      pointA: { x:300, y: canvas.height-250 },
+      pointA: { x: 300, y: 600 },
       bodyB: angryCircle,
       stiffness: 0.1
     });
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let tries = 5;
   let failInfo; let failRender;
   Events.on(engine, 'afterUpdate', () => {
-    if(mouseConstraint.mouse.button === -1 && angryCircle.position.y < canvas.height-260 && (tries > 0 || gameProgress === 6) ) {
+    if(mouseConstraint.mouse.button === -1 && (angryCircle.position.y < 550 || angryCircle.position.x > 350) && (tries > 0 || gameProgress === 6) ) {
       document.getElementById('tries-count').innerHTML = tries;
           tries--;
           angryCircle = createAngryCircle();

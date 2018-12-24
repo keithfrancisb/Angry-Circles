@@ -1,5 +1,6 @@
 html {
   user-select: none;
+  /* background-color: #2d2d43; */
 }
 
 html, body {margin: 0; height: 100%; overflow: hidden}

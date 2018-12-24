@@ -20,7 +20,7 @@ import { baseObjects } from '../base';
   };
 
   const renderStartGameStack = () => {
-    const obs = Composites.stack(x(500), y(700), 11, 40, 0, 0, createBox);
+    const obs = Composites.stack(x(500), y(700), 11, 20, 0, 0, createBox);
     // World.add(engine.world, obs);
     return obs;
   };
