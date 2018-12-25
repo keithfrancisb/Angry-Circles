@@ -14,16 +14,22 @@ body {
   letter-spacing: 0.25em;
 }
 
+#main-container {
+  width: 1400px;
+  height: 700px;
+  position: relative;
+}
+
 #start {
-  position: fixed;
+  position: absolute;
   z-index: 3;
-  top: 20vh;
+  top: 150px;
   color: rebeccapurple;
-  left: 4vw;
+  left: 50px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 55vw;
+  width: 760px;
 }
 
 h1 {
@@ -43,11 +49,11 @@ h1 {
 
 #game-info {
   color: deeppink;
-  position: fixed;
-  top: 5vh;
-  left: 4vw;
-  width: 26vw;
-  font-size: 1.7vw;
+  position: absolute;
+  top: 30px;
+  left: 50px;
+  width: 370px;
+  font-size: 25px;
   display: flex;
   justify-content: space-between;
   letter-spacing: 0.1em;
@@ -77,17 +83,20 @@ h1 {
 #tries-container {
   display: flex;
   justify-content: space-between;
-  width: 9vw;
+  width: 130px;
+  position: relative;
 }
 
 #tries-count, #level-count {
-  font-size: 3vw;
-  position: relative;
-  top: -1.5vw;
+  font-size: 42px;
+  position: absolute;
+  right: 0px;
+  top: -20px
 }
 
 #level-number-container {
   display: flex;
   justify-content: space-between;
   width: 9vw;
+  position: relative;
 }

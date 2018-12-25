@@ -1,10 +1,10 @@
 #level-info-container {
-  position: fixed;
-  top: 24vh;
-  left: 38vw;
-  font-size: 2vw;
+  position: absolute;
+  top: 150px;
+  left: 450px;
+  font-size: 30px;
   color: rebeccapurple;
-  width: 20vw;
+  width: 350px;
 }
 
 .base {

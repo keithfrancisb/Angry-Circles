@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         height: 700,
         background: "#16161D",
         wireframes: false,
-        showMousePosition: true
+        showMousePosition: false
       }
   });
 
@@ -163,5 +163,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => (reset.disabled = false), 4000);
   }, 500);
   });
+
+  const container = document.getElementById('main-container');
+  const canvas = document.getElementById('canvas');
+  container.appendChild(canvas);
 
 });
