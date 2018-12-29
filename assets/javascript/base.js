@@ -31,22 +31,6 @@ const renderTopWall = () => {
   return topWall;
 };
 
-// export const createAngryCircle = (x, y) => {
-//   let angryCircle = Bodies.circle(x, y, 25, { restitution: 0.8 });
-//   // World.add(engine.world, angryCircle);
-//   return angryCircle;
-// };
-//
-//
-// export const setupSlingshot = (x, y) => {
-//   let angryCircle = Bodies.circle(x, y, 0, 25, { restitution: 0.8 });
-//   const slingShot = Constraint.create({
-//     pointA: { x: x, y: y },
-//     bodyB: angryCircle,
-//     stiffness: 0.05
-//   });
-//   return slingShot;
-// }
 
 export const createMouseConstraint = (render, engine) => {
   const mouse = Mouse.create(canvas);

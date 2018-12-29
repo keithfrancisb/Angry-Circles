@@ -10,3 +10,10 @@
 .base {
   display: none;
 }
+
+.start-over {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -20,6 +20,6 @@ import { baseObjects } from '../base';
   };
 
   export const objects = [baseObjects, [renderStartGameStack]].flat();
-  export const info = "Congratulations! You beat the game!"
+  export const info = "<div class='start-over'><span>You Won!!</span><button>Start Over</button></div>";
 
   // ------------------------------- //
