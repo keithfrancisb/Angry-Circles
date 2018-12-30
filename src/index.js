@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // LEVEL HANDLER
-  const levels = [level0, level1, level2, level3, level4, level5, finalLevel];
+  const levels = [level0, level1, level2, level3, level4, level5, finalLevel, finalLevel];
 
   levels[gameProgress].objects.forEach( object => World.add(engine.world, object(engine)) );
 
