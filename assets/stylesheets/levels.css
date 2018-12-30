@@ -17,3 +17,14 @@
   justify-content: center;
   align-items: center;
 }
+
+.start-over > button {
+  font-size: 30px;
+  font-family: 'Bangers', cursive;
+  color: deeppink;
+  width: 50%;
+  border: 1px solid deeppink;
+  background-color: black;
+  outline: none;
+  margin: 15px 0;
+}

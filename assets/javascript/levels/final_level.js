@@ -19,7 +19,15 @@ import { baseObjects } from '../base';
     return obs;
   };
 
+  // const startOver = () => {
+  //   setTimeout(() => {
+  //     gameProgress = 1;
+  //     levelUpCount = 0;
+  //     resetWorld();
+  //   }, 1000);
+  // };
+// <button onclick='startOver'>Start Over</button></div>
   export const objects = [baseObjects, [renderStartGameStack]].flat();
-  export const info = "<div class='start-over'><span>You Won!!</span><button>Start Over</button></div>";
+  export const info = "<div class='start-over'><span>You Won!!</span>";
 
   // ------------------------------- //

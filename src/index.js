@@ -61,38 +61,51 @@ document.addEventListener('DOMContentLoaded', () => {
   World.add(engine.world, slingShot);
 
   let gameProgress = 0; let levelUpCount = 0;
-  const resetWorld = () => {
-      World.clear(engine.world);
+
+  function startOver() {
+    setTimeout(() => {
+      gameProgress = 1;
       levelUpCount = 0;
-      tries = 4;
-      levels[gameProgress].objects.forEach( object => World.add(engine.world, object(engine)) );
-      mouseConstraint = createMouseConstraint(render,engine);
-      angryCircle = createAngryCircle();
-      World.add(engine.world, angryCircle);
-      slingShot = setupSlingshot(angryCircle);
-      World.add(engine.world, slingShot);
-      document.getElementById('level-info').innerHTML = levels[gameProgress].info;
+      resetWorld();
+    }, 1000);
+  }
+
+  const resetWorld = () => {
+    World.clear(engine.world);
+    // debugger
+    levelUpCount = 0;
+    tries = 4;
+    levels[gameProgress].objects.forEach( object => World.add(engine.world, object(engine)) );
+    mouseConstraint = createMouseConstraint(render,engine);
+    angryCircle = createAngryCircle();
+    World.add(engine.world, angryCircle);
+    slingShot = setupSlingshot(angryCircle);
+    World.add(engine.world, slingShot);
+    document.getElementById('tries-count').innerHTML = tries;
+    document.getElementById('level-count').innerHTML = gameProgress;
+    document.getElementById('level-info').innerHTML = levels[gameProgress].info;
   };
+
 
   let tries = 5;
   let failInfo; let failRender;
   Events.on(engine, 'afterUpdate', () => {
     if(mouseConstraint.mouse.button === -1 && (angryCircle.position.y < 550 || angryCircle.position.x > 350) && (tries > 0 || gameProgress === 6) ) {
       document.getElementById('tries-count').innerHTML = tries;
-          tries--;
-          angryCircle = createAngryCircle();
-          World.add(engine.world, angryCircle);
-          slingShot.bodyB = angryCircle;
-          document.getElementById('tries-count').innerHTML = gameProgress === 6 ? '-' : tries;
-          if(tries === 0 && gameProgress !==6) {
-            failInfo = setTimeout(() => { document.getElementById('level-info').innerHTML = 'You Lost..... Try Again!'; }, 4000);
-            failRender = setTimeout(() => {
-              resetWorld();
-              tries = 4;
-              document.getElementById('tries-count').innerHTML = tries;
-            }, 7000);
-          }
+      tries--;
+      angryCircle = createAngryCircle();
+      World.add(engine.world, angryCircle);
+      slingShot.bodyB = angryCircle;
+      document.getElementById('tries-count').innerHTML = gameProgress >= 6 ? '-' : tries;
+      if(tries === 0 && gameProgress < 6) {
+        failInfo = setTimeout(() => { document.getElementById('level-info').innerHTML = 'You Lost..... Try Again!'; }, 4000);
+        failRender = setTimeout(() => {
+          resetWorld();
+          tries = 4;
+          document.getElementById('tries-count').innerHTML = tries;
+        }, 7000);
       }
+    }
   });
 
   // LEVEL HANDLER
@@ -109,15 +122,14 @@ document.addEventListener('DOMContentLoaded', () => {
           clearTimeout(failInfo);
           clearTimeout(failRender);
         if(gameProgress !== levels.length){
+          ++levelUpCount;
+          ++levelUpCount;
           gameProgress++;
           tries = 4;
-          if(++levelUpCount < 2) {
+          if(levelUpCount <= 2) {
             document.getElementById('level-info').innerHTML = "Level Passed!";
             setTimeout(() => {
               resetWorld();
-              document.getElementById('tries-count').innerHTML = tries;
-              document.getElementById('level-count').innerHTML = gameProgress;
-              document.getElementById('level-info').innerHTML = levels[gameProgress].info;
             }, 3000);
           }
         }
@@ -155,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const reset = document.getElementById('reset');
 
   reset.addEventListener('click', (e) => {
+    gameProgress = 1;
     reset.disabled = true;
     setTimeout(() => {
     resetWorld();
