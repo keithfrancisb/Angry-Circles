@@ -41,7 +41,7 @@ Angry Circle is inspired by the game Angry Birds. Angry Birds is a game where yo
 
   It also creates the rectangle with physical properties that the developer can then utilize at their discretion. Once the these functions have been defined, I use their return value as the shapes to be added to the `World` module of Matter.js. The `World` consists of the shape objects to be rendered on the screen. It is the main object that is to be rendered and interacted with.
 
-#### Players have at least 5 levels to beat where difficulty increases as they progress.
+#### Organized file strcture for current and future levels.
 Given that this is a multi-level type of game where endless mode does not exist, each level must be definite and unique from every other level. That being said, I have decided to create a file structure that would accommodate future levels to be added in the game for easy access and easy implementation.
 
 ![](level-file-structure.png)
