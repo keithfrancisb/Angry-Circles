@@ -1,5 +1,3 @@
-[Play now!](https://keithfrancisb.github.io/Angry-Circles/)
-![](angry-circle.gif)
 # Angry Circle
 Angry Circle is inspired by the game Angry Birds. Angry Birds is a game where you sling birds from one side of the screen with a goal to hit the pigs on the other side. Angry Circles would have same concept just with circles and triangles instead of birds and pigs.
 
@@ -10,6 +8,9 @@ Angry Circle is inspired by the game Angry Birds. Angry Birds is a game where yo
 * Knock the triangle down within 4 tries to go to the next level.
 * Level will reset if player fails to knock the triangle down within 4 tries.
 * Restart button is available if the player wishes to start the game from the first level.
+
+[Play now!](https://keithfrancisb.github.io/Angry-Circles/)
+![](angry-circle.gif)
 
 ### Technologies and Libraries
 * *HTML* : Used to contain the canvas that will run the game.
