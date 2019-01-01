@@ -1,3 +1,5 @@
+[Play now!](https://keithfrancisb.github.io/Angry-Circles/)
+![](angry-circle.gif)
 # Angry Circle
 Angry Circle is inspired by the game Angry Birds. Angry Birds is a game where you sling birds from one side of the screen with a goal to hit the pigs on the other side. Angry Circles would have same concept just with circles and triangles instead of birds and pigs.
 
