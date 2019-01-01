@@ -9,7 +9,7 @@ Angry Circle is inspired by the game Angry Birds. Angry Birds is a game where yo
 * Level will reset if player fails to knock the triangle down within 4 tries.
 * Restart button is available if the player wishes to start the game from the first level.
 
-[Play now!](https://keithfrancisb.github.io/Angry-Circles/)
+### [Play now!](https://keithfrancisb.github.io/Angry-Circles/)
 ![](angry-circle.gif)
 
 ### Technologies and Libraries
