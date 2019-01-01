@@ -44,22 +44,22 @@ Angry Circle is inspired by the game Angry Birds. Angry Birds is a game where yo
 #### Players have at least 5 levels to beat where difficulty increases as they progress.
 Given that this is a multi-level type of game where endless mode does not exist, each level must be definite and unique from every other level. That being said, I have decided to create a file structure that would accommodate future levels to be added in the game for easy access and easy implementation.
 
-    ![](level-file-structure.png)
+![](level-file-structure.png)
 
-    ```javascript
-    // index.js
-    import * as level0 from '../assets/javascript/levels/level0';
-    import * as level1 from '../assets/javascript/levels/level1';
-    import * as level2 from '../assets/javascript/levels/level2';
-    import * as level3 from '../assets/javascript/levels/level3';
-    import * as level4 from '../assets/javascript/levels/level4';
-    import * as level5 from '../assets/javascript/levels/level5';
-    import * as finalLevel from '../assets/javascript/levels/final_level';
+```javascript
+// index.js
+import * as level0 from '../assets/javascript/levels/level0';
+import * as level1 from '../assets/javascript/levels/level1';
+import * as level2 from '../assets/javascript/levels/level2';
+import * as level3 from '../assets/javascript/levels/level3';
+import * as level4 from '../assets/javascript/levels/level4';
+import * as level5 from '../assets/javascript/levels/level5';
+import * as finalLevel from '../assets/javascript/levels/final_level';
 
-    // LEVEL HANDLER
-    let gameProgress = 0;
-    const levels = [level0, level1, level2, level3, level4, level5, finalLevel];
-    ```
+// LEVEL HANDLER
+let gameProgress = 0;
+const levels = [level0, level1, level2, level3, level4, level5, finalLevel];
+```
 
   With the power of webpack's file modularization, each level file exports an array of functions that creates a shape object to be rendered for the level and a string of information that pertains to that specific level, which is used to guide or amuse the player.
 
