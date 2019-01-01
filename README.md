@@ -39,9 +39,32 @@ Angry Circle is inspired by the game Angry Birds. Angry Birds is a game where yo
   // where ctx is the 2D context of the canvas HTML tag
   ```
 
-  It also creates the rectangle with physical properties that the developer can then utilize at their discretion.
+  It also creates the rectangle with physical properties that the developer can then utilize at their discretion. Once the these functions have been defined, I use their return value as the shapes to be added to the `World` module of Matter.js. The `World` consists of the shape objects to be rendered on the screen. It is the main object that is to be rendered and interacted with.
 
-* Render the obstacles and the triangles to be hit by the slung circles.
-* Render the circles to be slung at the obstacles and the target triangles.
-* Players have 5 levels to beat where difficulty increases as they progress.
-* Background is easy on the eyes with clear instructions around the canvas containing the game.
+* ##### Players have at least 5 levels to beat where difficulty increases as they progress.
+Given that this is a multi-level type of game where endless mode does not exist, each level must be definite and unique from every other level. That being said, I have decided to create a file structure that would accommodate future levels to be added in the game for easy access and easy implementation.
+
+    ![](level-file-structure.png)
+
+    ```javascript
+    // index.js
+    import * as level0 from '../assets/javascript/levels/level0';
+    import * as level1 from '../assets/javascript/levels/level1';
+    import * as level2 from '../assets/javascript/levels/level2';
+    import * as level3 from '../assets/javascript/levels/level3';
+    import * as level4 from '../assets/javascript/levels/level4';
+    import * as level5 from '../assets/javascript/levels/level5';
+    import * as finalLevel from '../assets/javascript/levels/final_level';
+
+    // LEVEL HANDLER
+    let gameProgress = 0;
+    const levels = [level0, level1, level2, level3, level4, level5, finalLevel];
+    ```
+
+  With the power of webpack's file modularization, each level file exports an array of functions that creates a shape object to be rendered for the level and a string of information that pertains to that specific level, which is used to guide or amuse the player.
+
+  ```javascript
+  levels[gameProgress].objects.forEach( object => World.add(engine.world, object(engine)) );
+  ```
+
+  These level files are then imported into the main file and the objects per level are being added to the `World` using the code above. Once a level has passed, every object in the `World` is removed, the variable gameProgress gets incremented, the objects of the next level are added to the `World` and are then rendered for the player to beat.
