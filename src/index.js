@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let tries = 5;
   let failInfo; let failRender;
   Events.on(engine, 'afterUpdate', () => {
-    if(mouseConstraint.mouse.button === -1 && (angryCircle.position.y < 550 || angryCircle.position.x > 350) && (tries > 0 || gameProgress === 6) ) {
+    if(mouseConstraint.mouse.button === -1 && (angryCircle.position.y < 580 || angryCircle.position.x > 320) && (tries > 0 || gameProgress === 6) ) {
       document.getElementById('tries-count').innerHTML = tries;
       tries--;
       angryCircle = createAngryCircle();
