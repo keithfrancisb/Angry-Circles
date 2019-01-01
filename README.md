@@ -30,7 +30,7 @@ Angry Circle is inspired by the game Angry Birds. Angry Birds is a game where yo
   };
   ```
 
-  The code snippet above is a great example of one of the many functions that I have implemented in the game that utilizes physical properties, in this case the friction and density of a created box. The function Bodies.rectangle not only simplifies the process of constantly typing out the following code:
+  The code snippet above is a great example of one of the many functions that I have implemented in the game that utilizes physical properties, in this case the friction and density of a created box. The function `Bodies.rectangle` not only simplifies the process of constantly typing out the following code:
 
   ```javascript
   ctx.beginPath();
