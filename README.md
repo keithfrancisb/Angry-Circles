@@ -69,3 +69,8 @@ const levels = [level0, level1, level2, level3, level4, level5, finalLevel];
   ```
 
   These level files are then imported into the main file and the objects per level are being added to the `World` using the code above. Once a level has passed, every object in the `World` is removed, the variable gameProgress gets incremented, the objects of the next level are added to the `World` and are then rendered for the player to beat.
+
+### Future Plans
+* Add more complex levels to challenge players.
+* Add sophisticated styling while maintaining the minimalistic style of the game.
+* Measure player's success based on the number of tries left.
