@@ -16,12 +16,12 @@ import { baseObjects } from '../base';
   };
 
   const createBox = (x, y) => {
-    return Bodies.rectangle(x, y, 40,40, { density: 0.001 });
+    const box = Bodies.rectangle(x, y, 40,40, { density: 0.001, collisionFilter: { category: 0x0002 } });
+    return box;
   };
 
   const renderStartGameStack = () => {
     const obs = Composites.stack(x(500), y(700), 11, 20, 0, 0, createBox);
-    // World.add(engine.world, obs);
     return obs;
   };
 

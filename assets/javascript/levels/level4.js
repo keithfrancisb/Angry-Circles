@@ -14,31 +14,31 @@ import { baseObjects } from '../base';
   // ----------- LEVEL 4 ----------- //
 
   const renderFloor1 = () => {
-    const floor = Bodies.rectangle(x(500), y(400), 200, 30, { isStatic: true });
+    const floor = Bodies.rectangle(x(500), y(400), 200, 30, { isStatic: true, collisionFilter: { category: 0x0004 } });
     floor.friction = 100;
     return floor;
   };
 
   const renderRightWall = () => {
-    const wall = Bodies.rectangle(x(380), y(420), 30, 100, { isStatic: true });
+    const wall = Bodies.rectangle(x(380), y(420), 30, 100, { isStatic: true, collisionFilter: { category: 0x0004 } });
     Body.rotate(wall, 1);
     return wall;
   };
 
   const box1 = () => {
-    const box = Bodies.rectangle(x(500), y(450), 70, 70, { density: 0.5 });
+    const box = Bodies.rectangle(x(500), y(450), 70, 70, { density: 0.5, collisionFilter: { category: 0x0002 | 0x0004, mask: 0x0002 | 0x0004 } });
     box.friction = 100;
     return box;
   };
 
   const box2 = () => {
-    const box = Bodies.rectangle(x(430), y(450), 70, 70, { density: 0.5 });
+    const box = Bodies.rectangle(x(430), y(450), 70, 70, { density: 0.5, collisionFilter: { category: 0x0002 | 0x0004, mask: 0x0002 | 0x0004 } });
     box.friction = 100;
     return box;
   };
 
   const renderTarget = () => {
-    const triangle = Bodies.polygon(x(400), y(600), 3, 40, { label: "target", density: 0.1 });
+    const triangle = Bodies.polygon(x(400), y(600), 3, 40, { label: "target", density: 0.1, collisionFilter: { category: 0x0002 | 0x0004, mask: 0x0002 | 0x0004 } });
     Body.rotate(triangle, 1);
     return triangle;
   };

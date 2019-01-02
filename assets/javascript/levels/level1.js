@@ -8,27 +8,26 @@ import { baseObjects } from '../base';
   const x = (coordinate) => (canvas.width - coordinate);
   const y = (coordinate) => (canvas.height - coordinate);
 
-  // ----------- LEVEL 3 ----------- //
+  // ----------- LEVEL 1 ----------- //
 
   const renderFloor1 = () => {
-    const floor = Bodies.rectangle(x(300), y(200), 300, 30, { isStatic: true });
-    // World.add(engine.world, floor);
+    const floor = Bodies.rectangle(x(300), y(200), 300, 30, { isStatic: true, collisionFilter: { category: 0x0004 }  });
     return floor;
   };
 
   const createBox = (x, y) => {
-    return Bodies.rectangle(x, y, 20,20, { density: 0.9 });
+    const box = Bodies.rectangle(x, y, 20,20, { density: 0.9, collisionFilter: { category: 0x0002 | 0x0004, mask: 0x0002 | 0x0004 } });
+
+    return box;
   };
 
   const renderObstacle1 = () => {
     const obs = Composites.stack(x(450), y(400), 5, 8, 1, 1, createBox);
-    // World.add(engine.world, obs);
     return obs;
   };
 
   const renderTarget = () => {
-    const triangle = Bodies.polygon(x(200), y(500), 3, 40, { label: "target", density: 0.5 });
-    // World.add(engine.world, triangle);
+    const triangle = Bodies.polygon(x(200), y(500), 3, 40, { label: "target", density: 0.5, collisionFilter: { category: 0x0002, mask: 0x0002 | 0x0004 } });
     return triangle;
   };
 

@@ -32,18 +32,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   });
 
-
-
   const createAngryCircle = () => {
     let angryCircle = Bodies.circle(300, 600, 30, {
       label: 'angry',
       restitution: 0.8,
       density: 0.3,
+      collisionFilter: { category: 0x0003, mask: 0x0003 | 0x0004 }
      });
+
     return angryCircle;
   };
 
   let mouseConstraint = createMouseConstraint(render,engine);
+  mouseConstraint.collisionFilter.category = 0x0001;
+  mouseConstraint.collisionFilter.mask = 0x0001;
 
 
   const setupSlingshot = (angryCircle) => {
@@ -72,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const resetWorld = () => {
     World.clear(engine.world);
-    // debugger
     levelUpCount = 0;
     tries = 4;
     levels[gameProgress].objects.forEach( object => World.add(engine.world, object(engine)) );

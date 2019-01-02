@@ -14,13 +14,13 @@ import { baseObjects } from '../base';
   // ----------- LEVEL 5 ----------- //
 
   const renderRightWall = () => {
-    const wall = Bodies.rectangle(x(350), y(420), 30, 300, { isStatic: true, friction: 5000 });
+    const wall = Bodies.rectangle(x(350), y(420), 30, 300, { isStatic: true, friction: 5000, collisionFilter: { category: 0x0004 } });
     Body.rotate(wall, 1);
     return wall;
   };
 
   const constraint1 = (engine) => {
-    const fan = Bodies.rectangle(x(590), y(450), 280, 50, { density: 0.8 });
+    const fan = Bodies.rectangle(x(590), y(450), 280, 50, { density: 0.8, collisionFilter: { category: 0x0002 | 0x0004, mask: 0x0002 | 0x0004 } });
     World.add(engine.world, fan);
     setInterval(() => fan.torque = -6500, 100);
     const constraint = Constraint.create({
@@ -29,10 +29,10 @@ import { baseObjects } from '../base';
       stiffness: 1
     });
     return constraint;
-  }
+  };
 
   const renderTarget = () => {
-    const triangle = Bodies.polygon(x(400), y(600), 3, 40, { label: "target", density: 0.9, friction: 5000 });
+    const triangle = Bodies.polygon(x(400), y(600), 3, 40, { label: "target", density: 0.9, friction: 5000, collisionFilter: { category: 0x0002 | 0x0004, mask: 0x0002 | 0x0004 } });
     Body.rotate(triangle, 1);
     return triangle;
   };
