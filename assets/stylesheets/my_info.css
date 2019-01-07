@@ -1,11 +1,11 @@
 #my-info {
-  position: fixed;
+  /* position: fixed; */
   display: flex;
   width: 460px;
   justify-content: space-between;
   align-items: center;
-  bottom: 0px;
-  left: 80px;
+  /* bottom: 0px; */
+  /* left: 80px; */
   color: #101015;
   letter-spacing: 0.2rem;
   font-size: 18px;
