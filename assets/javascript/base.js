@@ -4,29 +4,29 @@ let { Engine, Render, World, Bodies, Mouse, MouseConstraint, Constraint, Events 
 
 const canvas = document.getElementById('canvas');
 
-  // canvas.width = window.innerWidth;
-  // canvas.height = window.innerHeight;
+  const canvas_width = 1400;
+  const canvas_height = 700;
 
 const renderBasePlatform = () => {
-  const ground = Bodies.rectangle(canvas.width/2, canvas.height+130, canvas.width+220, 80, { label: "base", isStatic: true, collisionFilter: { category: 0x0004 } });
+  const ground = Bodies.rectangle(canvas_width/2, canvas_height, canvas_width, 80, { label: "base", isStatic: true, collisionFilter: { category: 0x0004 } });
   // World.add(engine.world, ground);
   return ground;
 };
 
 const renderLeftWall = () => {
-  const leftWall = Bodies.rectangle(-100, 20, 50, canvas.height*3, { isStatic: true, collisionFilter: { category: 0x0004 }  });
+  const leftWall = Bodies.rectangle(0, 20, 50, canvas_height*3, { isStatic: true, collisionFilter: { category: 0x0004 }  });
   // World.add(engine.world, leftWall);
   return leftWall;
 };
 
 const renderRightWall = () => {
-  const rightWall = Bodies.rectangle(canvas.width+130, 20, 50, canvas.height*3, { isStatic: true, collisionFilter: { category: 0x0004 }  });
+  const rightWall = Bodies.rectangle(canvas_width, 20, 50, canvas_height*3, { isStatic: true, collisionFilter: { category: 0x0004 }  });
   // World.add(engine.world, rightWall);
   return rightWall;
 };
 
 const renderTopWall = () => {
-  const topWall = Bodies.rectangle(canvas.width/2, 10, canvas.width + 350, 50, { isStatic: true, collisionFilter: { category: 0x0004 }  });
+  const topWall = Bodies.rectangle(canvas_width/2, 10, canvas_width, 50, { isStatic: true, collisionFilter: { category: 0x0004 }  });
   // World.add(engine.world, topWall);
   return topWall;
 };
