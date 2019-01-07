@@ -37,7 +37,7 @@ body {
 }
 
 h1 {
-  font-size: 5vw;
+  font-size: 75px;;
   transform: rotate(-5deg);
 }
 
@@ -46,8 +46,8 @@ h1 {
 }
 
 #instructions {
-  width: 18vw;
-  font-size: 2vw;
+  width: 300px;
+  font-size: 30px;
   color: purple;
 }
 
@@ -67,22 +67,16 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 6vw;
-  width: 14vw;
+  height: 90px;
+  width: 210px;
   border: transparent;
   background-color: transparent;
   outline: none;
 }
 
 #game-info > button > img {
-  width: 5vw;
+  width: 80px;
 }
-
-/* #game-info > button > span {
-  font-family: "Bangers";
-  color: deeppink;
-  font-size: 2vw;
-} */
 
 #tries-container {
   display: flex;
@@ -101,6 +95,6 @@ h1 {
 #level-number-container {
   display: flex;
   justify-content: space-between;
-  width: 9vw;
+  width: 120px;
   position: relative;
 }
